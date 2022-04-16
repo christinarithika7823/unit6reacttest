@@ -1,0 +1,22 @@
+{
+  "cities": [
+    {
+      "cityname": "chennai",
+      "population": "142000000",
+      "country": "India",
+      "id": 1
+    },
+    {
+      "cityname": "chennai",
+      "population": "142000000",
+      "country": "India",
+      "id": 2
+    },
+    {
+      "cityname": "chennai",
+      "population": "142000000",
+      "country": "India",
+      "id": 3
+    }
+  ]
+}
