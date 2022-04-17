@@ -1,16 +1,19 @@
 import { useState } from "react";
 import "../App.css";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+// import axios from "axios";
 
 export const AddCountry = () => {
 
     const [text, setText] = useState();
-
+    const dispatch = useDispatch();
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8080/countries",text).then((res) => {
-            console.log("added", res);
-        })
+        const payload={text}
+        // axios.post("http://localhost:8081/countries",text).then((res) => {
+        //     console.log("added", res);
+        // })
+        dispatch(AddCountry(payload));
         console.log("country details..",text);
     }
     const handleChange = (e) => {
@@ -21,7 +24,7 @@ export const AddCountry = () => {
         });
    }
     return (
-        <div id="countrybox">
+        <div className="countrybox">
             <h1>Add Country</h1>
             <div>
                 <form onSubmit={handleSubmit}>

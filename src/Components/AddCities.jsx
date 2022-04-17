@@ -1,13 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
 import "../App.css";
+
+import { useDispatch, useSelector } from "react-redux";
 export const AddCities = () => {
     const [data, setData] = useState({
         cityname: "",
         population: "",
         country: ""
     });
-
+    const dispatch = useDispatch();
     const handleSubmit = (e) => {
         e.preventDefault();
         const citydata = {
@@ -15,9 +17,10 @@ export const AddCities = () => {
             population: data.population,
             country: data.country
         }
-        axios.post("http://localhost:8081/cities", citydata).then((res) => {
-            console.log("data added", res.cityname);
-        })
+        dispatch(AddCities(citydata));
+        // axios.post("http://localhost:8082/cities", citydata).then((res) => {
+        //     console.log("data added", res.cityname);
+        // })
         console.log("city added", data);
     }
 
@@ -29,15 +32,18 @@ export const AddCities = () => {
         })
     }
     return (
-        <div>
+        <div className="countrybox1">
             <h1>Add City</h1>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="cityname" value={data.cityname} onChange={handleChange} placeholder="Enter City Name" />
+                <label id="n2">Add City Name : </label>
+                <input id="city"type="text" name="cityname" value={data.cityname} onChange={handleChange} placeholder="Enter City Name" />
                 <br />
-                <input type="text" name="population" value={data.population} onChange={handleChange} placeholder="Enter Population" />
+                <label id="n3">Add Population : </label>
+                <input id="pop"type="text" name="population" value={data.population} onChange={handleChange} placeholder="Enter Population" />
                 <br />
-                <input type="text" name="country" value={data.country} onChange={handleChange} placeholder="Enter Country Name" />
-                <button  onSubmit={handleSubmit}>Submit</button>
+                <label id="n4">Add Country Name : </label>
+                <input id="country12"type="text" name="country" value={data.country} onChange={handleChange} placeholder="Enter Country Name" />
+                <button id="sub2" onSubmit={handleSubmit}>Submit</button>
 
             </form>
         </div>
